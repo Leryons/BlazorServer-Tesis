@@ -1,0 +1,30 @@
+@if (SelectedDocument == DocumentType.None)
+{
+    <div class="form-card">
+        <h3>Seleccione un tipo de documento</h3>
+        <p>Por favor, elija un tipo de documento en el menú superior para comenzar a subir su archivo.</p>
+    </div>
+}
+
+else
+{
+    <div class="form-card">
+        <h3>Subir @SelectedDocument</h3>
+        <InputFile OnChange="HandleFileSelection" />
+        <button class="btn-submit" @onclick="UploadDocument" disabled="@(selectedFile == null || isUploading)">Subir Documento</button>
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-danger mt-3">
+                @errorMessage
+            </div>
+        }
+
+        @if (isUploading)
+        {
+            <div class="full-screen-spinner">
+                <div class="spinner">Subiendo archivo...</div>
+            </div>
+        }
+    </div>
+}

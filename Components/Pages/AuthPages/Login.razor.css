@@ -1,0 +1,104 @@
+﻿.form-card 
+{
+    max-width: 450px;
+    margin: 5rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+h3 
+{
+    text-align: center;
+    color: #1a202c;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 1rem;
+}
+
+.field
+{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+label
+{
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #4a5568;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-control 
+{
+    padding: 0.85rem;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #2d3748;
+    background-color: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus 
+{
+    outline: none;
+    border-color: #370875;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(55, 8, 117, 0.1);
+}
+
+.btn-submit 
+{
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #370875;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover 
+{
+    background-color: #260552;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(55, 8, 117, 0.2);
+}
+
+.btn-submit:active 
+{
+    transform: translateY(0);
+}
+
+.status-msg 
+{
+    display: block;
+    text-align: center;
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #e53e3e;
+}
+
+.entry-animation 
+{
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn 
+{
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

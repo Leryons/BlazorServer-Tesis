@@ -1,0 +1,108 @@
+@page "/home"
+@rendermode InteractiveServer
+
+<PageTitle>Inicio</PageTitle>
+
+@if (SelectedSection == UserInterfaceSection.None)
+{
+    <div class="body-content">
+        <div class="entry-animation">
+            <CarrouselContainer Title="Subir Archivos" ImagePath="/Resource/Icon/upload-icon.svg" TextExample="Cargar documentos desde su dispositivo"/>
+            <button @onclick="() => SelectSection(UserInterfaceSection.UploadSection)" class="btn-blazor">Subir Archivos</button>
+        </div>
+
+        <div class="entry-animation">
+            <CarrouselContainer Title="Documentos" ImagePath="/Resource/Icon/doc-icon.svg" TextExample="Ver y gestionar sus documentos"/>
+            <button @onclick="() => SelectSection(UserInterfaceSection.ShowcaseSection)" class="btn-blazor">Documentos</button>
+        </div> 
+
+        <div class="entry-animation">
+            <CarrouselContainer Title="Ajustes" ImagePath="/Resource/Icon/config-icon.svg" TextExample="Asignación del dispositivo NFC"/>  
+            <button @onclick="() => SelectSection(UserInterfaceSection.SettingsSection)" class="btn-blazor">Ajustes</button>
+        </div>
+
+        @if (userSessionService.User?.Role != UserRole.User && userSessionService.User != null)
+        {
+            <div class="entry-animation">
+                <CarrouselContainer Title="Modo Búsqueda" ImagePath="/Resource/Icon/search-icon.svg" TextExample="Buscar los documentos de un usuario"/>  
+                <button @onclick="() => SelectSection(UserInterfaceSection.SearchSection)" class="btn-blazor">Búsqueda</button>
+            </div>
+        }
+    </div>
+}
+
+else if (SelectedSection == UserInterfaceSection.UploadSection)
+{
+    <div class="entry-animation">
+
+        <button class="btn-back" @onclick="() => SelectSection(UserInterfaceSection.None)">
+            <img src="/Resource/Icon/back-icon.svg" alt="Back" />
+            Volver
+        </button>
+
+        <div class="side-menu">
+            <h3>Subir Archivos</h3>
+            <p>Seleccione el tipo de archivo que desea subir a su cuenta.</p>
+            <select @bind="@SelectedDocument" class="form-control">
+                @foreach (var docType in Enum.GetValues(typeof(DocumentType)))
+                {
+                    <option value="@docType">@docType</option>
+                }
+
+            </select>
+        </div>
+
+        <DocumentForm SelectedDocument="@SelectedDocument" />
+    </div>
+}
+
+else if (SelectedSection == UserInterfaceSection.ShowcaseSection)
+{
+    <div class="entry-animation">
+
+        <button class="btn-back" @onclick="() => SelectSection(UserInterfaceSection.None)">
+            <img src="/Resource/Icon/back-icon.svg" alt="Back" />
+            Volver
+        </button>
+
+        <DocumentVisualizer />
+    </div>
+}
+
+else if (SelectedSection == UserInterfaceSection.SettingsSection)
+{
+    <div class="entry-animation">
+
+        <button class="btn-back" @onclick="() => SelectSection(UserInterfaceSection.None)">
+            <img src="/Resource/Icon/back-icon.svg" alt="Back" />
+            Volver
+        </button>
+
+        <NfcConfig />
+    </div>
+}
+
+else if (SelectedSection == UserInterfaceSection.SearchSection)
+{
+    <div class="entry-animation">
+
+        <button class="btn-back" @onclick="() => SelectSection(UserInterfaceSection.None)">
+            <img src="/Resource/Icon/back-icon.svg" alt="Back" />
+            Volver
+        </button>
+        @if (userSessionService.User?.Role != UserRole.User)
+        {
+            <RoleSearch />
+        }
+        else
+        {
+            <p>Acceso denegado: necesita un rol distinto para usar el modo de búsqueda.</p>
+        }
+
+    </div>
+}
+
+<button class="btn-logout" @onclick="Logout">
+    <img src="/Resource/Icon/logout-icon.svg" alt="Logout" />
+    <span>Cerrar Sesión</span>
+</button>

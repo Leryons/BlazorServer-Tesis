@@ -1,0 +1,55 @@
+.carrousel-container 
+{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.carrousel-container h3
+{
+    text-align: center;
+    width: 100%;
+    color: #333333;
+    font-size: medium;
+}
+
+.carrousel-item
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15px;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    width: 220px;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.carrousel-item img
+{
+    width: 64px;
+    height: 64px;
+    margin-bottom: 10px;
+}
+
+.smooth-div 
+{
+    width: 80%;
+    border: 0;
+    border-top: 2px solid rgba(0, 0, 0, 0.322);
+    margin: 15px 0;
+}
+
+.carrousel-item :nth-child(3)
+{
+    font-size: small;
+    color: #666666ab;
+}
+
+.carrousel-item :last-child
+{
+    color: #370875;
+}

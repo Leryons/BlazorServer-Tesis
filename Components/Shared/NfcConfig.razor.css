@@ -1,0 +1,77 @@
+.security-card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.auth-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.auth-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.auth-item.linked {
+    border-left: 5px solid #4ade80; 
+    background: #f0fff4;
+}
+
+.auth-icon {
+    font-size: 2rem;
+    margin-right: 15px;
+    color: #6366f1;
+}
+
+.auth-info {
+    flex-grow: 1;
+}
+
+.auth-info label {
+    display: block;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.auth-info span {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.btn-action {
+    padding: 8px 18px;
+    border-radius: 8px;
+    border: none;
+    background: #6366f1;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-action:disabled {
+    background: #ccc;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

@@ -1,0 +1,10 @@
+@if (SessionService.IsAuthenticated)
+{
+    <span>@SessionService.User?.Name</span>
+}
+
+else
+{
+    <a href="/login">Iniciar Sesión</a>
+    <a href="/register">Registrarse</a>
+}

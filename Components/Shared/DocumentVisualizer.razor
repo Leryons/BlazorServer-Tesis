@@ -1,0 +1,66 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h3 class="fw-bold text-primary mb-0">Gestor de Documentos</h3>
+            <p class="text-muted small">Visualización segura de documentos personales</p>
+        </div>
+        <span class="badge rounded-pill bg-primary px-3">@documents.Count Registros</span>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light">
+                    <tr>
+                        <th class="ps-4">Documento</th>
+                        <th>Propietario</th>
+                        <th>Tipo</th>
+                        <th class="text-end pe-4">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var doc in documents)
+                    {
+                        <tr>
+                            <td class="ps-4">
+                                <div class="d-flex align-items-center">
+                                    <div class="icon-square @GetColorClass(doc.Type) me-3">
+                                        <i class="@GetIcon(doc.Type)"></i>
+                                    </div>
+                                    <span class="fw-bold">@doc.Title</span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="text-muted">@doc.UserName</span>
+                            </td>
+                            <td>
+                                <span class="badge text-dark border">@doc.Type.ToString()</span>
+                            </td>
+                            <td class="text-end pe-4">
+                                <button class="btn btn-primary btn-sm rounded-pill px-3 me-2" @onclick="() => OpenFile(doc.FilePath)">
+                                    <i class='bx bx-show-alt me-1'></i> Abrir
+                                </button>
+                                @if (Documents == null)
+                                {
+                                    <button class="btn btn-danger btn-sm rounded-pill px-3" @onclick="() => DeleteDocument(doc)">
+                                        <i class='bx bx-trash me-1'></i> Eliminar
+                                    </button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @if (showModal)
+    {
+        <div class="modal-backdrop">
+            <div class="modal-image">
+                <button class="btn-close" @onclick="CloseModal">✕</button>
+                <img src="@modalImagePath" alt="Documento" />
+            </div>
+        </div>
+    }
+</div>

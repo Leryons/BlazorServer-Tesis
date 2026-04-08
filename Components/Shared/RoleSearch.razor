@@ -1,0 +1,23 @@
+<div class="role-search">
+    <div class="form-card">
+        <h3>Modo Búsqueda por RFID</h3>
+
+        <p class="status-msg">@statusMessage</p>
+
+        <button class="btn-submit" @onclick="BeginRead" disabled="@(isReading)">Leer RFID</button>
+
+        @if (documents != null)
+        {
+            <div style="margin-top:1rem">
+                <DocumentVisualizer Documents="documents" />
+            </div>
+        }
+    </div>
+
+    @if (isReading)
+    {
+        <div class="full-screen-spinner">
+            <div class="spinner">Leyendo RFID...</div>
+        </div>
+    }
+</div>

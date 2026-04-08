@@ -1,0 +1,16 @@
+﻿bin/
+obj/
+*.user
+*.suo
+.vscode/
+.vs/
+*.log
+*.userprefs
+# Ignore local DB and generated database files
+Services/Database.db
+*.db
+
+# Local env and secrets
+.env
+.env.*
+

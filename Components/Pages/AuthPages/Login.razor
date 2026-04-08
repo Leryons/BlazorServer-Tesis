@@ -1,0 +1,29 @@
+﻿@page "/Login"
+@rendermode InteractiveServer
+
+<PageTitle>Iniciar Sesión</PageTitle>
+
+<div class="form-card entry-animation">
+    <h3>Inicio de Sesión</h3>
+
+    <div class="row">
+        <div class="field">
+            <label>Correo Electrónico</label>
+            <input class="form-control" type="email" @bind="Email" placeholder="ejemplo@correo.com" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="field">
+            <label>Contraseña</label>
+            <input class="form-control" type="password" @bind="Password" placeholder="••••••••" />
+        </div>
+    </div>
+
+    <button class="btn-submit" @onclick="LoginUsuario">Acceder</button>
+
+    @if (!string.IsNullOrEmpty(statusMessage))
+    {
+        <p class="status-msg">@statusMessage</p>
+    }
+</div>

@@ -1,0 +1,43 @@
+<div class="security-card">
+    <h3><i class='bx bxs-shield-quarter'></i> Seguridad de Hardware</h3>
+    <p class="text-muted">Vincula tus dispositivos físicos.</p>
+
+    <div class="auth-methods">
+        <div class="auth-item @(string.IsNullOrEmpty(userSessionService.User?.RfidUid) ? "" : "linked")">
+            <div class="auth-icon">
+                <i class='bx bx-rfid'></i>
+            </div>
+            <div class="auth-info">
+                <label>Tarjeta RFID / NFC</label>
+                <span>@(string.IsNullOrEmpty(userSessionService.User?.RfidUid) ? "No vinculada" : $"ID: {userSessionService.User.RfidUid}")</span>
+            </div>
+            <button class="btn-action" @onclick="VinculateRfid" disabled="@isProcessing">
+                @if (isProcessingRfid) { <div class="spinner"></div> }
+                else { <span>@(string.IsNullOrEmpty(userSessionService.User?.RfidUid) ? "Vincular" : "Reemplazar")</span> }
+            </button>
+        </div>
+        
+        @*
+        <div class="auth-item linked">
+            <div class="auth-icon">
+                <i class='bx bx-fingerprint'></i>
+            </div>
+            <div class="auth-info">
+                <label>Huella Dactilar</label>
+                <span>Registrada en Sensor</span>
+            </div>
+            <button class="btn-action" @onclick="UpdateFingerprint" disabled="@isProcessing">
+                <span>Actualizar</span>
+            </button>
+        </div>
+        *@
+        
+    </div>
+
+    @if (!string.IsNullOrEmpty(statusMessage))
+    {
+        <div class="status-alert @statusClass">
+            <i class='bx bx-info-circle'></i> @statusMessage
+        </div>
+    }
+</div>
