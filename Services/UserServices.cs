@@ -238,19 +238,16 @@ public class UserServices
         using var connection = new MySqlConnection(_connectionString);
         await connection.OpenAsync();
 
-        // Primero obtener el FilePath para borrarlo después
         var selectCommand = connection.CreateCommand();
         selectCommand.CommandText = "SELECT FilePath FROM Documents WHERE Id = @documentId;";
         selectCommand.Parameters.AddWithValue("@documentId", documentId);
         var filePath = await selectCommand.ExecuteScalarAsync() as string;
 
-        // Borrar de la base de datos
         var deleteCommand = connection.CreateCommand();
         deleteCommand.CommandText = @"DELETE FROM Documents WHERE Id = @documentId;";
         deleteCommand.Parameters.AddWithValue("@documentId", documentId);
         await deleteCommand.ExecuteNonQueryAsync();
 
-        // Borrar el archivo físico si existe
         if (!string.IsNullOrEmpty(filePath))
         {
             var fullPath = Path.Combine(_webHostEnvironment.WebRootPath, filePath.TrimStart('/'));
