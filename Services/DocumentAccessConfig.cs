@@ -4,7 +4,7 @@ public static class DocumentAccessConfig
 {
     private static readonly Dictionary<UserRole, DocumentType[]> _allowed = new()
     {
-        //Roles and their allowed document types
+        //Roles y sus permisos a documentos
         { UserRole.User, new DocumentType[] { DocumentType.Cedula, DocumentType.Passport, DocumentType.License, DocumentType.MedicalRecord } },
         { UserRole.Police, new DocumentType[] { DocumentType.Cedula, DocumentType.License } },
         { UserRole.Doctor, new DocumentType[] { DocumentType.Cedula, DocumentType.MedicalRecord } },

@@ -58,7 +58,6 @@ public partial class SignUp : IDisposable
         Console.WriteLine("Mensaje recibido en Blazor: " + msg);
         if (msg.StartsWith("SUCCESS") && waitingForSensor && !registroEnProceso)
         {
-            // Proceed to save user after successful capture
             registroEnProceso = true;
             waitingForSensor = false;
 

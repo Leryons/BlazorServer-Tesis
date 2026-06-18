@@ -10,7 +10,6 @@ public partial class DocumentForm
 
     private async Task HandleFileSelection(InputFileChangeEventArgs eventArgs)
     {
-        // Store selected file; actual upload happens when user clicks the button.
         try
         {
             var file = eventArgs.File;
@@ -73,7 +72,6 @@ public partial class DocumentForm
             else
             {
                 errorMessage = $"Ya tienes un documento de tipo {SelectedDocument} subido. No puedes subir otro.";
-                // No limpiar selectedFile para que el usuario pueda intentarlo de nuevo o cambiar
             }
             isUploading = false;
             StateHasChanged();

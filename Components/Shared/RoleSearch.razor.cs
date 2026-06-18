@@ -58,7 +58,6 @@ public partial class RoleSearch
 
             var allDocs = await userServices.GetAllDocumentsForRfidUi(rfid);
 
-            // Filter docs by current user's role using DocumentAccessConfig
             var allowed = DocumentAccessConfig.GetAllowedTypes(userSessionService.User?.Role ?? UserRole.User);
 
             documents = allDocs.Where(d => allowed.Contains(d.Type)).ToList();
