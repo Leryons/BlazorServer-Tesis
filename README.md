@@ -40,10 +40,3 @@ O bien:
 ```bash
  dotnet run
 ```
-
-
-## Notas importantes
-
-- La conexión a la base de datos y los secretos deben configurarse correctamente antes de ejecutar la aplicación.
-- Si usas dispositivos RFID/NFC o seriales, verifica que el puerto configurado sea el correcto para tu equipo.
-- Para entornos de producción, evita dejar credenciales sensibles hardcodeadas en el código.
